@@ -1,0 +1,19 @@
+name: Clean Workflow Runs
+description: A GitHub Action to clean up old workflow runs
+inputs:
+  keep: 
+    description: "存在数量"
+    required: true
+    default: '3'
+  token:
+    description: "Authorized secret GitHub Personal Access Token. Defaults to github.token"
+    required: false
+    default: ${{ github.token }}
+runs:
+  using: composite
+  steps:
+    - name: Clean
+      shell: bash
+      run: |
+          echo "sa: ${{ inputs.keep }}"
+          
